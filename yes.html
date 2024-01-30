@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="wrapper">
+        <h2 class="question">How much do you love me?</h2>
+        <div id="errorMessage"></div>
+        <div id="sliderContainer">
+            <input type="range" id="slider" min="1" max="100" value="50" step="1" oninput="updateValue()">
+        </div>
+        <button class="confirm" onclick="click">OK</button>
+        <img class="gif" alt="gif" id ="gif" src="images/second.gif">
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    updateValue();
+
+    // Add an event listener to the confirm button
+    const confirmButton = document.querySelector(".confirm");
+    confirmButton.addEventListener("click", function () {
+        const sliderValue = document.getElementById("slider").value;
+        const gif = document.getElementById("gif");
+
+        // Check the slider value and take action accordingly
+        if (parseInt(sliderValue) === 100) {
+            // Redirect to another screen if the slider value is 100
+            window.location.href = 'end.html';
+        } else {
+            gif.src = "images/gameover.gif";
+            const errorMessageElement = document.getElementById("errorMessage");
+                errorMessageElement.textContent = "Game over!";
+            
+        }
+    })
+});
+
+
+function updateValue() {
+    const slider = document.getElementById('slider');
+    const value = parseInt(slider.value);
+    const percent = (value - slider.min) / (slider.max - slider.min) * 100;
+
+    // Set the gradient colors based on the current value
+    slider.style.background = 'linear-gradient(to right, #fb6689ff 0%, #fb6689ff ' + percent + '%, transparent ' + percent + '%, transparent 100%)';
+};
+    </script>
+</body>
+</html>
+

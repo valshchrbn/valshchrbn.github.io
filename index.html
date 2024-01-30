@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+            <h2 class="question">Do you <span>love</span> me?</h2>
+            <img class="gif" alt="gif" src="images/first.gif">
+        <div class="btn-group">
+            <button class="yes" onclick="navigateToAnotherScreen()">Yes</button>
+            <button class="no" event="mouseover">No</button>
+        </div>
+        </div>
+
+        <script>
+            const no = document.querySelector(".no");
+
+no.addEventListener("mouseover", () => {
+    const noRect = no.getBoundingClientRect();
+    const maxX = window.innerWidth - noRect.width;
+    const maxY = window.innerHeight - noRect.height;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    no.style.left = randomX + "px";
+    no.style.top = randomY + "px";
+});
+
+function navigateToAnotherScreen() {
+
+    window.location.href = 'yes.html';
+};
+        </script>
+</body>
+</html>
