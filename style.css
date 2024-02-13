@@ -121,5 +121,6 @@ button:nth-child(2){
 @media only screen and (max-width: 767px) {
     .sun {
         width: 300px; /* Adjust the width for smaller screens */
+        height: auto;
     }
 }
